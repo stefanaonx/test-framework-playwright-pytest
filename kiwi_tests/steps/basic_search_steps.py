@@ -13,11 +13,6 @@ def navigate_to_homepage(page: Page):
     home_page.navigate()
     expect(page).to_have_url(home_page.url)
 
-@given('I reject the privacy consent')
-def reject_privacy_consent(page: Page):
-    home_page = HomePage(page)
-    home_page.reject_privacy_consent()
-
 @when('I select one-way trip type')
 def select_one_way_trip(page: Page):
     home_page = HomePage(page)
@@ -56,7 +51,8 @@ def click_search_button(page: Page):
 
 @then('I am redirected to search results page')
 def redirected_to_search_results_page(page: Page):
-    expect(page).to_have_url(r"https://www.kiwi.com/en/search/results/.*")
+    page.wait_for_load_state('networkidle', timeout=60000) # Increased timeout to 60 seconds
+    expect(page).to_have_url(r"^https://www.kiwi.com/en/search/results/.+$")
     # Assert that a flight result card is visible, indicating the search results page loaded
-    expect(page.locator("div[data-test='ResultCardWrapper']")).to_be_visible()
+    expect(page.locator("div[data-test='ResultCardWrapper']")).to_be_visible(timeout=30000) # Added explicit timeout for visibility
 

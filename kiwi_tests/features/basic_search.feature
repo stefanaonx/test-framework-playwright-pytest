@@ -3,7 +3,6 @@ Feature: Basic search form
 
     Scenario: T1 - One way flight search
         Given As an not logged user navigate to homepage https://www.kiwi.com/en/
-        And I reject the privacy consent
         When I select one-way trip type
         And Set as departure airport RTM
         And Set the arrival Airport MAD
