@@ -34,8 +34,8 @@ CHANGELOG.md              # Project Changelog
 1.  **Clone the repository:**
 
     ```bash
-    git clone <your-repository-url>
-    cd <your-repository-name>
+    git clone git@github.com:stefanaonx/test-framework-playwright-pytest.git
+    cd git@github.com:stefanaonx/test-framework-playwright-pytest.git
     ```
 
 2.  **Install Python dependencies:**
